@@ -13,7 +13,8 @@ IntentRecognizer::CIntentRecognizer::~CIntentRecognizer()
 
 void IntentRecognizer::CIntentRecognizer::fillVectors()
 {
-    m_weatherKeywords.reserve(10);
+    // Fill keywords for weather. Modify the reserve value to add more keywords
+    m_weatherKeywords.reserve(WEATHER_KEYWORDS_SIZE);
     m_weatherKeywords.push_back("weather");
     m_weatherKeywords.push_back("temprature");
     m_weatherKeywords.push_back("hot");
@@ -22,21 +23,23 @@ void IntentRecognizer::CIntentRecognizer::fillVectors()
     m_weatherKeywords.push_back("snow");
     m_weatherKeywords.push_back("sun");
 
-    m_prepKeywords.reserve(8);
+    // Fill keywords for prepositions keywords. Modify the reserve value to add more keywords
+    m_prepKeywords.reserve(PREPOSITIONS_KEYWORDS_SIZE);
     m_prepKeywords.push_back("in");
     m_prepKeywords.push_back("here");
     m_prepKeywords.push_back("at");
     m_prepKeywords.push_back("of");
     m_prepKeywords.push_back("from");
 
-
-    m_factKeywords.reserve(8);
+    // Fill keywords for facts related keywords. Modify the reserve value to add more keywords
+    m_factKeywords.reserve(FACT_KEYWORDS_SIZE);
     m_factKeywords.push_back("fact");
     m_factKeywords.push_back("news");
     m_factKeywords.push_back("information");
     m_factKeywords.push_back("knowledge");
 
-    m_reqKeywords.reserve(20);
+    // Fill keywords for Request related keywords. Modify the reserve value to add more keywords
+    m_reqKeywords.reserve(REQUEST_KEYWORDS_SIZE);
     m_reqKeywords.push_back("how");
     m_reqKeywords.push_back("How");
     m_reqKeywords.push_back("what");
@@ -61,22 +64,26 @@ void IntentRecognizer::CIntentRecognizer::fillVectors()
 
 
 
-std::string IntentRecognizer:: CIntentRecognizer:: run(std::string i_input)
+std::string IntentRecognizer:: CIntentRecognizer:: run(const std::string &i_input)
 {
     fillVectors();
 
+    // Initialize flags for representing presence of keywords in the query
     bool hasWA = false;
     bool hasLA = false;
     bool hasFact = false;
     bool firstIsReqWord = false;
 
+    // Initialize return string
     std::string intent = "No Intent Found";
     std::stringstream iss(i_input);
     std::string currWord;
     int count = 0;
+
+    // Loop through words in query and check for keywords to set the corresponding flags
     while (iss >> currWord)
     {
-        if(count< 3)
+        if(count< 3)  // In a most of the grammatically correct statement, request keywords is present in first 3 words
         {
             firstIsReqWord = firstIsReqWord || std::any_of(m_reqKeywords.begin(), m_reqKeywords.end(),
                                          [currWord](const std::string & i_word) { return currWord.compare(i_word) == 0; });
