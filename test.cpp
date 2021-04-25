@@ -185,6 +185,20 @@ TEST_F(testIntentRecognizer, testWeather_GetWeatherIntent_12)
 
 /// This test case tests the testIntentRecognizer class
 ///
+/// Input Value: Get me today's temprature !
+/// The class should return Intent Get Weather
+///
+/// testtype:   unit
+TEST_F(testIntentRecognizer, testWeather_GetWeatherIntent_13)
+{
+    IntentRecognizer::CIntentRecognizer testObj;
+    std::string input = "Can you get me today's temprature !";
+    std::string intent = testObj.run(input);
+    ASSERT_EQ("Get Weather", intent);
+}
+
+/// This test case tests the testIntentRecognizer class
+///
 /// Input Value: How is the weather in Ulm ?
 /// The class should return Intent Get Weather
 ///

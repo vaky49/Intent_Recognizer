@@ -22,6 +22,7 @@ namespace IntentRecognizer
         std::vector<std::string> m_weatherKeywords;
         std::vector<std::string> m_prepKeywords;
         std::vector<std::string> m_factKeywords;
+        std::vector<std::string> m_reqKeywords;
 
         void fillVectors();
 
