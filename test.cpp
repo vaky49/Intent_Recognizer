@@ -297,7 +297,7 @@ TEST_F(testIntentRecognizer, testWeather_GetFacts_2)
 
 /// This test case tests the testIntentRecognizer class
 ///
-/// Input Value: Tell me an interesting news
+/// Input Value: Share some interesting knowledge !
 /// The class should return Intent Get Weather
 ///
 /// testtype:   unit
@@ -311,7 +311,7 @@ TEST_F(testIntentRecognizer, testWeather_GetFacts_3)
 
 /// This test case tests the testIntentRecognizer class
 ///
-/// Input Value: Tell me an interesting news
+/// Input Value: Get me a nice fact !
 /// The class should return Intent Get Weather
 ///
 /// testtype:   unit
@@ -325,7 +325,7 @@ TEST_F(testIntentRecognizer, testWeather_GetFacts_4)
 
 /// This test case tests the testIntentRecognizer class
 ///
-/// Input Value: Tell me an interesting news
+/// Input Value: Provide some fact on weather!
 /// The class should return Intent Get Weather
 ///
 /// testtype:   unit
@@ -340,7 +340,7 @@ TEST_F(testIntentRecognizer, testWeather_GetFacts_5)
 
 /// This test case tests the testIntentRecognizer class
 ///
-/// Input Value: Tell me an interesting news
+/// Input Value: Whats new toady !
 /// The class should return Intent Get Weather
 ///
 /// testtype:   unit
